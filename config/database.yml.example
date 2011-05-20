@@ -1,0 +1,21 @@
+development: &ALL
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: freelovr_development
+  pool: 5
+  
+test: &TEST
+  <<: *TEST
+  database: freelovr_test
+
+production:
+  <<: *TEST
+  database: freelovr_production
+
+staging:
+  <<: *TEST
+  database: freelovr_staging
+
+cucumber:
+  <<: *TEST

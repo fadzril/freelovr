@@ -10,7 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110516102247) do
+ActiveRecord::Schema.define(:version => 20110519063919) do
+
+  create_table "filters", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rates", :force => true do |t|
     t.integer  "rate"
