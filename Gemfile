@@ -9,6 +9,9 @@ gem 'will_paginate', '>= 3.0.pre2'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.5.0'
-  gem 'sqlite3'
+  gem 'jasmine', '>= 1.0.2.0'
+  gem 'nokogiri', '>= 1.4.4'
+  gem 'capybara', '>= 0.4.1.2'
+  gem 'rr', '>= 1.0.2'
   gem 'pg'
 end
