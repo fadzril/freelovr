@@ -1,0 +1,38 @@
+%article.panel
+  = render :partial => 'filter'
+  %section.list
+    %ul#list
+      -@users.each do |user|
+        %li
+          %div.user
+            = gravatar_image_tag("#{user.email}", :alt => user.name)
+            %span.name
+              = user.name
+            %span.designation
+              = user.designation
+            %span.scope
+              = user.scope
+            %span.email
+              = user.email
+          %div.actions
+            %span.skill
+              %div{id: "level-#{user.level}"}
+            %span
+              = link_to('Website', user.website)
+            %span.detail
+              = link_to('View Details', user)
+            %span
+              = link_to('Get in touch', "mailto:#{user.email}")
+          %div.status
+            %span{class: user.availability}
+      =will_paginate @users
+  %aside.sidebar
+    %div.statistic
+      %h2 Freelovr Statistic
+      %h3= "Currently #{@users.total_entries} freelancers"
+      %h3= "Currently #{@statistic.size} jobs are active"
+      %ul
+        -@statistic.each do |s|
+          %li
+            %span.size= "#{s.total.to_s}"
+            %span= "#{s.designation.to_s}"

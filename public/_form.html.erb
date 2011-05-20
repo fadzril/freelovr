@@ -1,0 +1,82 @@
+<%= form_for @user, :html => { :multipart => true } do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'What is your name? *' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email, 'Your public email? *' %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :website, 'Do you have a website?' %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter, 'Your twitter account' %><br />
+    <%= f.text_field :twitter %>
+  </div>
+  <div class="field">
+    <%= f.label :availability, 'What is your availability condition right now?' %><br />
+    <%= f.text_field :availability %>
+  </div>
+  <div class="field">
+    <%= f.label :scope, 'How do you do it?' %>  <br />
+    <%= f.text_field :scope %>
+  </div>
+  <div class="field">
+    <%= f.label :designation, 'In which profession you belong to?' %><br />
+    <%= f.text_field :designation %>
+  </div>
+  <div class="field">
+    <%= f.label :experience, 'How long you\'ve been freelancing?' %><br />
+    <%= f.text_field :experience %>
+  </div>
+  <div class="field">
+    <%= f.label :level, 'What is your skill level?' %><br />
+    <%= f.text_field :level %>
+  </div>
+
+  <% f.fields_for :rates do |l| %>
+    <div class="field">
+      <%= l.label :rate, 'What is your rate level? MYR/USD?' %><br />
+      <%= l.text_field :rate %>
+    </div>
+    <div class="field">
+      <%= l.label :based, 'Per Project/Per Hour?' %><br />
+      <%= l.text_field :based %>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <%= f.label :skillset, 'What\'s you main skill?' %><br />
+    <%= f.text_field :skillset %>
+  </div>
+  <div class="field">
+    <%= f.label :other, 'You are awesome because...' %><br />
+    <%= f.text_field :other %>
+  </div>
+  <div class="field">
+    <%= f.label :recommended, 'Who would you recommend?' %><br />
+    <%= f.text_field :recommended %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,64 @@
+%article#details
+  #span#notice
+    = notice
+  %span#links
+    -#= link_to('Edit', edit_user_path)
+    = link_to('x', users_path)
+
+  %div.rate
+    %span.currency
+      =@rate.currency
+    %span.value
+      =@rate.rate
+    %span.based
+      ="/#{@rate.based}"
+
+  %div.avatar
+    = gravatar_image_tag(@user.email, :alt => @user.name)
+
+  %div.detail
+    %span.name
+      = @user.name
+    %span.designation
+      = @user.designation
+    %span.level
+      -case @user.level
+        -when 4 then
+          "Totally Rockstar"
+        -when 3 then
+          "Somewhat a Rockstar"
+        -when 2 then
+          "Not a Rockstar"
+        -when 1 then
+          "Not Really Sure"
+
+    %span.experience
+      = "has #{@user.experience} years of experience"
+
+    %hr.clearfix
+    %div.status
+      %span Doing freelance for
+      %p= @user.scope
+
+      %span Availability
+      %p= "currently #{@user.availability}"
+
+    %hr.clearfix
+    %div.skill
+      %span.skillset My skillset
+      %p= @user.skillset
+      %p.other= @user.other
+
+    %hr.clearfix
+    %div.recommend
+      %span= "#{@user.name} would like to recommend"
+      %p= @user.recommended
+
+    %hr.clearfix
+    %div.links
+      %span
+        = link_to('Website', @user.website)
+      %span
+        = link_to('Get in touch', "mailto#{@user.email}")
+      %span
+        = link_to("@twitter", "http://twitter.com/#{@user.twitter}")

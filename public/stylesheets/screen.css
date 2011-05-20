@@ -1,0 +1,760 @@
+/* Welcome to Compass.*/
+/* line 17, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 115, ../../../../../.rvm/gems/ruby-1.9.2-p180@freelovr/gems/compass-0.11.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 11, ../../app/stylesheets/screen.scss */
+body {
+  background: #858585 url(../images/background.jpg) no-repeat;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font: normal 0.8em/1.6em "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font: normal 0.8em "DIN", "Helvetica Neue, Arial, sans-serif";
+  text-transform: uppercase;
+}
+/* line 19, ../../app/stylesheets/screen.scss */
+body a {
+  text-decoration: none;
+  outline: none;
+}
+/* line 24, ../../app/stylesheets/screen.scss */
+body section#content, body footer#footer {
+  display: block;
+  float: left;
+  width: 100%;
+}
+/* line 30, ../../app/stylesheets/screen.scss */
+body header#header {
+  margin: 0 auto;
+  text-align: left;
+  color: #333;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+/* line 38, ../../app/stylesheets/screen.scss */
+body header#header h1 {
+  float: left;
+  font: bold 1.3em/1.6em "Helvetica Neue", Helvetica, sans-serif;
+  color: #FFF;
+}
+/* line 44, ../../app/stylesheets/screen.scss */
+body header#header div#logo {
+  background: transparent url("../images/logo.png") top left no-repeat;
+  height: 170px;
+  width: 170px;
+  float: left;
+}
+/* line 50, ../../app/stylesheets/screen.scss */
+body header#header div#logo h1 {
+  text-indent: -9999em;
+}
+/* line 55, ../../app/stylesheets/screen.scss */
+body header#header nav#navigation {
+  display: block;
+  float: left;
+  clear: both;
+}
+/* line 60, ../../app/stylesheets/screen.scss */
+body header#header nav#navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 65, ../../app/stylesheets/screen.scss */
+body header#header nav#navigation ul li {
+  padding: 0;
+  margin: 0;
+  display: inline;
+  position: absolute;
+  top: 75px;
+  left: -95px;
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+/* line 74, ../../app/stylesheets/screen.scss */
+body header#header nav#navigation ul li a {
+  padding: 5px 0;
+  margin: 0;
+  outline: none;
+  color: #EEE;
+  background: #262626;
+  width: 100px;
+  float: right;
+  text-align: center;
+}
+/* line 85, ../../app/stylesheets/screen.scss */
+body header#header nav#navigation ul li a:hover, body header#header nav#navigation ul li a:active {
+  background: #111;
+  color: #FFF;
+}
+/* line 90, ../../app/stylesheets/screen.scss */
+body header#header nav#navigation ul li:first-child {
+  top: 30px;
+  left: -85px;
+  -moz-transform: rotate(25deg);
+  -webkit-transform: rotate(25deg);
+  -o-transform: rotate(25deg);
+  -ms-transform: rotate(25deg);
+  transform: rotate(25deg);
+}
+/* line 96, ../../app/stylesheets/screen.scss */
+body header#header nav#navigation ul li:last-child {
+  top: 120px;
+  left: -85px;
+  -moz-transform: rotate(-25deg);
+  -webkit-transform: rotate(-25deg);
+  -o-transform: rotate(-25deg);
+  -ms-transform: rotate(-25deg);
+  transform: rotate(-25deg);
+}
+/* line 105, ../../app/stylesheets/screen.scss */
+body section#content {
+  text-align: center;
+}
+/* line 108, ../../app/stylesheets/screen.scss */
+body section#content article.panel {
+  margin: 0 auto;
+  width: 980px;
+  overflow: hidden;
+}
+/* line 113, ../../app/stylesheets/screen.scss */
+body section#content article.panel section.list {
+  float: left;
+  width: 700px;
+}
+/* line 118, ../../app/stylesheets/screen.scss */
+body section#content article.panel aside.sidebar {
+  float: right;
+  width: 250px;
+  padding: 10px;
+  background: #CCC;
+  margin: 5px;
+  text-align: left;
+}
+/* line 126, ../../app/stylesheets/screen.scss */
+body section#content article.panel aside.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 131, ../../app/stylesheets/screen.scss */
+body section#content article.panel aside.sidebar ul li {
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+}
+/* line 137, ../../app/stylesheets/screen.scss */
+body section#content article.panel aside.sidebar ul span {
+  padding: 6px 0;
+}
+/* line 142, ../../app/stylesheets/screen.scss */
+body section#content article.panel aside.sidebar ul .size {
+  padding: 5px;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-box-shadow: #8a8a8a 0px 1px 5px inset;
+  -webkit-box-shadow: #8a8a8a 0px 1px 5px inset;
+  -o-box-shadow: #8a8a8a 0px 1px 5px inset;
+  box-shadow: #8a8a8a 0px 1px 5px inset;
+  background: red;
+  color: #222;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #EEE;
+}
+/* line 161, ../../app/stylesheets/screen.scss */
+body section#content #filter {
+  float: left;
+  width: 100%;
+  background: #4D4D4D;
+  color: #DDD;
+  margin: 0;
+  padding: 20px 0;
+  text-align: left;
+}
+/* line 170, ../../app/stylesheets/screen.scss */
+body section#content #filter div {
+  float: left;
+}
+/* line 174, ../../app/stylesheets/screen.scss */
+body section#content #filter .filter-action {
+  float: left;
+  padding: 0;
+  position: relative;
+}
+/* line 179, ../../app/stylesheets/screen.scss */
+body section#content #filter .filter-action span {
+  float: left;
+  margin: 8px;
+}
+/* line 184, ../../app/stylesheets/screen.scss */
+body section#content #filter .filter-action input[type=text] {
+  padding: 5px;
+  background: #2D2D2D;
+  border: 1px solid #515151;
+  color: #A8C70D;
+  width: 190px;
+  height: 20px;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  position: relative;
+}
+/* line 201, ../../app/stylesheets/screen.scss */
+body section#content form {
+  margin: 0 auto;
+  padding: 20px;
+  background: #DDD;
+  text-align: left;
+  width: 600px;
+  overflow: hidden;
+}
+/* line 209, ../../app/stylesheets/screen.scss */
+body section#content form .field {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 10px 0;
+}
+/* line 215, ../../app/stylesheets/screen.scss */
+body section#content form .field .radio {
+  clear: both;
+  display: table-cell;
+  padding: 10px 10px 0 0;
+}
+/* line 220, ../../app/stylesheets/screen.scss */
+body section#content form .field .radio input[type=radio] {
+  float: left;
+  margin: 5px;
+}
+/* line 225, ../../app/stylesheets/screen.scss */
+body section#content form .field .radio label {
+  float: right;
+  padding: 2px 0;
+}
+/* line 232, ../../app/stylesheets/screen.scss */
+body section#content form .left, body section#content form .right {
+  width: 49%;
+  clear: none;
+}
+/* line 237, ../../app/stylesheets/screen.scss */
+body section#content form .left {
+  float: left;
+}
+/* line 241, ../../app/stylesheets/screen.scss */
+body section#content form .right {
+  float: right;
+}
+/* line 245, ../../app/stylesheets/screen.scss */
+body section#content form label {
+  text-transform: capitalize;
+}
+/* line 249, ../../app/stylesheets/screen.scss */
+body section#content form input {
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+/* line 253, ../../app/stylesheets/screen.scss */
+body section#content form input[type=text], body section#content form textarea {
+  background: transparent;
+  width: 100%;
+  float: left;
+  font-size: 1.3em;
+  padding: 5px 0;
+  border: none;
+  border-bottom: 1px dashed #999;
+  outline: none;
+}
+/* line 264, ../../app/stylesheets/screen.scss */
+body section#content form textarea {
+  background: #EEE;
+  border: none;
+  text-transform: lowercase;
+}
+/* line 270, ../../app/stylesheets/screen.scss */
+body section#content form select {
+  display: block;
+  clear: both;
+}
+/* line 275, ../../app/stylesheets/screen.scss */
+body section#content form .actions {
+  float: left;
+  clear: both;
+}
+/* line 281, ../../app/stylesheets/screen.scss */
+body section#content article#details {
+  text-align: left;
+  padding: 20px;
+  margin: 5px auto;
+  width: 660px;
+  background: #DDD;
+  position: relative;
+  overflow: hidden;
+}
+/* line 290, ../../app/stylesheets/screen.scss */
+body section#content article#details div.avatar {
+  float: left;
+  width: 100px;
+}
+/* line 295, ../../app/stylesheets/screen.scss */
+body section#content article#details span#links {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+/* line 300, ../../app/stylesheets/screen.scss */
+body section#content article#details span#links a {
+  float: left;
+  width: 24px;
+  height: 24px;
+  background: transparent url(../images/close.png) top left no-repeat;
+  text-indent: -999em;
+}
+/* line 309, ../../app/stylesheets/screen.scss */
+body section#content article#details div.rate {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  width: 75px;
+  height: 75px;
+  z-index: 1000;
+  background: #666;
+  color: #FFF;
+  padding: 5px;
+  text-align: center;
+  text-shadow: 0 1px #222;
+  box-shadow: 0 1px 5px #111 inset;
+  -webkit-box-shadow: 0 1px 5px #111 inset;
+  -moz-box-shadow: 0 1px 5px #111 inset;
+  border-radius: 75px;
+  -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+}
+/* line 328, ../../app/stylesheets/screen.scss */
+body section#content article#details div.rate span.currency {
+  font-size: .95em;
+}
+/* line 332, ../../app/stylesheets/screen.scss */
+body section#content article#details div.rate span.value {
+  font-size: 3em;
+  font-weight: bold;
+  line-height: .9em;
+  letter-spacing: -0.09em;
+  color: #a8c70d;
+  display: block;
+}
+/* line 341, ../../app/stylesheets/screen.scss */
+body section#content article#details div.rate span.based {
+  font-size: .985em;
+  text-transform: lowercase;
+}
+/* line 347, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail {
+  float: left;
+  position: relative;
+  width: 480px;
+}
+/* line 352, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail p {
+  clear: both;
+  margin-bottom: 20px;
+  line-height: 2em;
+  text-transform: capitalize;
+}
+/* line 359, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail p.other {
+  text-transform: lowercase;
+}
+/* line 363, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail span {
+  float: left;
+}
+/* line 367, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail span.name {
+  font-size: 1.6em;
+  font-weight: bold;
+  float: left;
+}
+/* line 373, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail span.designation {
+  float: left;
+  clear: both;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #777;
+}
+/* line 381, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail span.level {
+  float: left;
+  padding: 3px 8px;
+  background: #333;
+  color: #FFF;
+  margin: 2px 10px;
+  font-size: .8em;
+}
+/* line 390, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail span.experience {
+  float: left;
+  clear: both;
+  line-height: 1.8em;
+}
+/* line 397, ../../app/stylesheets/screen.scss */
+body section#content article#details div.detail div.links a {
+  padding: 3px 8px;
+  margin: 0 6px 0 0;
+  background: #2ad0f9;
+  color: #FFF;
+  float: left;
+  font-size: .8em;
+  font-weight: bold;
+}
+/* line 410, ../../app/stylesheets/screen.scss */
+body section#content ul#list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 415, ../../app/stylesheets/screen.scss */
+body section#content ul#list li {
+  width: 320px;
+  padding: 10px;
+  background: transparent url("../images/list-background.png") top right no-repeat;
+  float: left;
+  margin: 5px;
+  position: relative;
+  color: #EEE;
+  opacity: .9;
+  text-align: left;
+  text-shadow: 0 1px #333;
+}
+/* line 427, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div {
+  float: left;
+}
+/* line 431, ../../app/stylesheets/screen.scss */
+body section#content ul#list li img {
+  float: left;
+  height: 70px;
+  width: 70px;
+}
+/* line 437, ../../app/stylesheets/screen.scss */
+body section#content ul#list li span {
+  display: block;
+  float: left;
+  margin-left: 5px;
+}
+/* line 443, ../../app/stylesheets/screen.scss */
+body section#content ul#list li span.name {
+  font-weight: bold;
+  font-size: 1.6em;
+  letter-spacing: -0.05em;
+  float: left;
+  width: 240px;
+}
+/* line 451, ../../app/stylesheets/screen.scss */
+body section#content ul#list li span.email {
+  float: left;
+  display: block;
+  font-size: .9em;
+  text-transform: lowercase;
+  width: 190px;
+}
+/* line 459, ../../app/stylesheets/screen.scss */
+body section#content ul#list li span.designation {
+  font-weight: bold;
+  float: left;
+  margin: 4px 5px;
+}
+/* line 465, ../../app/stylesheets/screen.scss */
+body section#content ul#list li span.scope {
+  padding: 3px 8px;
+  margin: 3px 0;
+  background: #111;
+  color: #FFF;
+  font-size: .8em;
+  font-weight: normal;
+  width: auto;
+  float: left;
+}
+/* line 476, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions {
+  float: left;
+  text-shadow: none;
+}
+/* line 480, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span {
+  width: auto;
+  margin: 3px 0 3px 10px;
+}
+/* line 484, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span a {
+  padding: 3px 8px;
+  background: #2ad0f9;
+  color: #FFF;
+  float: left;
+  font-size: .8em;
+  font-weight: bold;
+}
+/* line 494, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span.skill {
+  margin: 3px 0;
+}
+/* line 497, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span.skill div {
+  background: transparent url("../images/level.png") 0 64px;
+  float: left;
+  width: 65px;
+  height: 16px;
+}
+/* line 504, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span.skill div#level-1 {
+  background-position: 0 64px;
+}
+/* line 508, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span.skill div#level-2 {
+  background-position: 0 48px;
+}
+/* line 512, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span.skill div#level-3 {
+  background-position: 0 32px;
+}
+/* line 516, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.actions span.skill div#level-4 {
+  background-position: 0 16px;
+}
+/* line 522, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.status {
+  position: absolute;
+  right: -2px;
+  top: -2px;
+}
+/* line 527, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.status span {
+  float: left;
+  background: transparent url("../images/status.png") top left;
+  height: 92px;
+  width: 108px;
+  text-indent: -999em;
+}
+/* line 535, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.status span.available {
+  background-position: 0 0;
+}
+/* line 539, ../../app/stylesheets/screen.scss */
+body section#content ul#list li > div.status span.unavailable {
+  background-position: 108px 0;
+}
+/* line 544, ../../app/stylesheets/screen.scss */
+body section#content ul#list li a {
+  color: #FFF;
+}
+/* line 549, ../../app/stylesheets/screen.scss */
+body section#content ul#list li:hover {
+  background: #777;
+}
+/* line 554, ../../app/stylesheets/screen.scss */
+body section#content ul#list li:after {
+  position: absolute;
+  border: 10px solid #F00;
+  /*border-color: transparent transparent red transparent;*/
+  top: 0;
+  right: 0;
+}
+/* line 564, ../../app/stylesheets/screen.scss */
+body footer#footer {
+  background: #999;
+  color: #CCC;
+  position: fixed;
+  bottom: 0;
+}
+/* line 571, ../../app/stylesheets/screen.scss */
+body .clearfix {
+  clear: both;
+}
+
+/* Select Box */
+/* line 577, ../../app/stylesheets/screen.scss */
+.sbHolder {
+  background-color: #2D2D2D;
+  border: 1px solid #515151;
+  font-family: Arial,sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  height: 30px;
+  position: relative;
+  width: 200px;
+}
+
+/* line 588, ../../app/stylesheets/screen.scss */
+.sbSelector {
+  display: block;
+  height: 30px;
+  left: 0pt;
+  line-height: 30px;
+  outline: medium none;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 10px;
+  top: 0pt;
+  width: 170px;
+}
+
+/* line 601, ../../app/stylesheets/screen.scss */
+.sbSelector:link, .sbSelector:visited, .sbSelector:hover {
+  color: #a8c70d;
+  outline: medium none;
+  text-decoration: none;
+}
+
+/* line 607, ../../app/stylesheets/screen.scss */
+.sbToggle {
+  background: url("../images/select-icons.png") no-repeat scroll 0pt -116px transparent;
+  display: block;
+  height: 30px;
+  outline: medium none;
+  position: absolute;
+  right: 0pt;
+  top: 0pt;
+  width: 30px;
+}
+
+/* line 618, ../../app/stylesheets/screen.scss */
+.sbToggle:hover {
+  background: url("../images/select-icons.png") no-repeat scroll 0pt -167px transparent;
+}
+
+/* line 622, ../../app/stylesheets/screen.scss */
+.sbToggleOpen {
+  background: url("../images/select-icons.png") no-repeat scroll 0pt -16px transparent;
+}
+
+/* line 626, ../../app/stylesheets/screen.scss */
+.sbToggleOpen:hover {
+  background: url("../images/select-icons.png") no-repeat scroll 0pt -66px transparent;
+}
+
+/* line 630, ../../app/stylesheets/screen.scss */
+.sbHolderDisabled {
+  background-color: #3C3C3C;
+  border: 1px solid #515151;
+}
+
+/* line 643, ../../app/stylesheets/screen.scss */
+.sbOptions {
+  background-color: #212121;
+  border: 1px solid #515151;
+  left: -1px;
+  list-style: none outside none;
+  margin: 0pt;
+  overflow-y: auto;
+  padding: 0pt;
+  position: absolute;
+  top: 30px;
+  width: 200px;
+  z-index: 1;
+}
+
+/* line 657, ../../app/stylesheets/screen.scss */
+.sbOptions li {
+  padding: 0pt 7px;
+}
+
+/* line 661, ../../app/stylesheets/screen.scss */
+.sbOptions a {
+  border-bottom: 1px dotted #515151;
+  display: block;
+  outline: medium none;
+  padding: 7px 0pt 7px 3px;
+}
+
+/* line 668, ../../app/stylesheets/screen.scss */
+.sbOptions a:link, .sbOptions a:visited {
+  color: #DDDDDD;
+  text-decoration: none;
+}
+
+/* line 673, ../../app/stylesheets/screen.scss */
+.sbOptions a:hover {
+  color: #a8c70d;
+}
+
+/* line 677, ../../app/stylesheets/screen.scss */
+.sbOptions li.last a {
+  border-bottom: medium none;
+}

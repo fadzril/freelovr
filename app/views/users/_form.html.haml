@@ -1,0 +1,124 @@
+- form_for(@user, :html => {:multipart => true}) do |f|
+  - if @user.errors.any?
+    %div.error
+      %h2
+        = pluralize(@user.errors.count, 'error') #{prohibited this user from being saved}
+      %ul
+        %li = msg
+
+  .field
+    = f.label :name, 'What\'s your name?'
+    = f.text_field :name, :placeholder => 'What we should call you i.e. Jim, Johnny, Jamboree'
+
+  .field
+    = f.label :email, 'Your public email? *'
+    = f.text_field :email, :placeholder => 'Most probably this should be your primary mail'
+
+  .field
+    = f.label :website, 'Do you have a website?'
+    = f.text_field :website, :placeholder => 'Would be awesome if this website leads to your portfolio.'
+
+  .field
+    = f.label :twitter, 'Your twitter account'
+    = f.text_field :twitter, :placeholder => 'Surely you have one is it?'
+
+  .field.left
+    = f.label :designation, 'In which profession you belong to?'
+    = f.select(:designation,
+      [['Web Developer', 'Web Developer'],
+      ['Software Developer', 'Software Developer'],
+      ['Web Designer', 'Web Designer'],
+      ['Graphic Designer', 'Graphic Designer'],
+      ['Ilustrator', 'Ilustrator'],
+      ['Writer', 'Writer'],
+      ['Project Manager', 'Project Manager'],
+      ['Video', 'Video'],
+      ['Animation', 'Animation'],
+      ['3D', '3D'],
+      ['Accountant', 'Accountant'],
+      ['Researcher', 'Researcher'],
+      ['Sys Admin', 'Sys Admin'],
+      ['Hacker', 'Hacker'],
+      ['Other', 'Other']])
+
+  .field.right
+    = f.label :scope, 'How do you do it?'
+    = f.select(:scope, [['Full Time', 'Full Time'], ['Part Time', 'Part Time'], ['Student', 'Student']])
+
+  .field
+    = f.label :experience, 'How long you\'ve been freelancing?'
+    %div.radio
+      = f.label :experience, '1 Year', :value => '1'
+      = f.radio_button(:experience, '1')
+    %div.radio
+      = f.label :experience, '2 Years', :value => '2'
+      = f.radio_button(:experience, '2')
+    %div.radio
+      = f.label :experience, '3 Years', :value => '3'
+      = f.radio_button(:experience, '3')
+    %div.radio
+      = f.label :experience, '4 Years', :value => '4'
+      = f.radio_button(:experience, '4')
+    %div.radio
+      = f.label :experience, '5 Years', :value => '5'
+      = f.radio_button(:experience, '5')
+    %div.radio
+      = f.label :experience, 'Long Enough', :value => '6'
+      = f.radio_button(:experience, '6')
+
+  .field
+    = f.label :level, 'What is your skill level?'
+    %div.radio
+      = f.label :level, 'Totally Rockstar', :value => '4'
+      = f.radio_button(:level, '4')
+    %div.radio
+      = f.label :level, 'Somewhat a Rockstar', :value => '3'
+      = f.radio_button(:level, '3')
+    %div.radio
+      = f.label :level, 'Not a Rockstar', :value => '2'
+      = f.radio_button(:level, '2')
+    %div.radio
+      = f.label :level, 'Not really sure', :value => '1'
+      = f.radio_button(:level, '1')
+
+  - f.fields_for :rates, @user.new_record? ? @user.rates.build : @user.rates do |l|
+    .field.left
+      = l.label :rate, 'Your rate?'
+      = l.text_field :rate, :placeholder => '1000'
+
+    .field.right
+      = l.label :currency, 'Currency? MYR/USD?'
+      = l.select(:currency, [['MYR', 'USD'], ['USD', 'USD']])
+
+    .clearfix
+    .field.left
+      = l.label :based, 'Per Project/Per Hour?'
+      %div.radio
+        = l.label :based, 'Hourly Based', :value => 'hour'
+        = l.radio_button(:based, 'hour')
+      %div.radio
+        = l.label :based, 'Project Based', :value => 'project'
+        = l.radio_button(:based, 'project')
+
+  .field.right
+    = f.label :availability, 'Availability?'
+    = f.select(:availability, [['Available', 'available'], ['Unavailable', 'unavailable']])
+
+  .field
+    = f.label :skillset, 'What\'s you main skill?'
+    = f.text_field :skillset, :placeholder => 'Make it short i.e. Ruby, Rails, PHP, Drupal, WP, Joomla, Sale Copy, UX, UI'
+
+  .field
+    = f.label :other, 'You are awesome because...'
+    = f.text_area :other, :placeholder =>'This is where you should pitch yourself, anything goes..', rows: '5'
+
+  .field
+    = f.label :recommended, 'Who would you recommend?'
+    = f.text_field :recommended
+
+  .field
+    = f.label :Avatar, 'Upload your image'
+    = f.file_field :avatar
+
+  .actions
+    = f.submit

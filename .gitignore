@@ -1,0 +1,7 @@
+.bundle
+.idea
+.rvmrc
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/

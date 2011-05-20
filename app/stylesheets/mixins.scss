@@ -1,0 +1,15 @@
+@mixin uppercase-font($fontName, $size) {
+  font: normal $size "#{$fontName}", 'Helvetica Neue, Arial, sans-serif';
+  text-transform: uppercase;
+}
+
+@mixin lowercase-font($fontName, $size) {
+  font: normal $size "#{$fontName}", 'Helvetica Neue, Arial, sans-serif';
+  text-transform: lowercase;
+}
+
+@mixin border-radius($value) {
+  border-radius: $value;
+  -moz-border-radius: $value;
+  -webkit-border-radius: $value;
+}
