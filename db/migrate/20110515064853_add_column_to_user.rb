@@ -10,8 +10,6 @@ class AddColumnToUser < ActiveRecord::Migration
     add_column :users, :other,        :text
     add_column :users, :level,        :integer
     add_column :users, :experience,   :integer
-
-    remove_column :users, :password
   end
 
   def self.down
