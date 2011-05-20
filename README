@@ -1,7 +1,3 @@
 Freelovr - List of freelancer based in Malaysia
 URL
 -freelovr.heroku.com-
-
-Guide how to migrate user
-run $rails console
-run $User.import_user()
