@@ -46,4 +46,9 @@ Freelovr::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Rack-sprockets
+  Rack::Sprockets.configure do |config|
+    config.cache = true
+  end
 end

@@ -1,17 +1,21 @@
 %div#filter
   %div.filter-action
-    %span Job Scope
-    %select
-      -@statistic.each do |d|
-        %option{:value => d.designation}
-          = d.designation
-    %span Availability
-    %select
-      -@status.each do |d|
-        - if !d.availability.nil?
-          -@current_status = d.availability
-          %option{:value => @current_status }
-            = @current_status
+    %div.left
+      %span Job Scope
+      %select
+        -@statistic.each do |d|
+          %option{:value => d.designation}
+            = d.designation
 
-    %span Search Freelancer
-    %input{:type => 'text', :placeholder => 'Freelancer Name'}
+    %div.left
+      %span Availability
+      %select
+        -@status.each do |d|
+          - if !d.availability.nil?
+            -@current_status = d.availability
+            %option{:value => @current_status }
+              = @current_status
+
+    %div.right
+      %span Search Freelancer
+      %input{:type => 'text', :placeholder => 'Freelancer Name'}

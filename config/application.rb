@@ -38,5 +38,9 @@ module Freelovr
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Sprockets
+    require "rack/sprockets"
+    config.middleware.use "Rack::Sprockets", :load_path => ['app/javascripts', 'app/javascripts/vendor']
   end
 end

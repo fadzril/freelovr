@@ -2,14 +2,8 @@
 %html
   %head
     %title Freelovr List
-    %link{:type => 'text/css', :media => 'screen', :href => '/stylesheets/screen.css', :rel => 'stylesheet'}
-    %link{:type => 'text/css', :media => 'screen', :href => '/stylesheets/jquery.ui.css', :rel => 'stylesheet'}
-    %script{:type => 'text/javascript', :src => '/javascripts/vendor/jquery.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/vendor/jquery.ui.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/vendor/spine.js'}
-    %script{:type => 'text/javascript', :src => '/javascripts/vendor/selectbox.js'}
-
-    %script{:type => 'text/javascript', :src => '/javascripts/application.js'}
+    =stylesheet_link_tag "screen"
+    =javascript_include_tag "application"
 
   %body.body
     %header#header
