@@ -3,12 +3,15 @@
   %head
     %title Freelovr List
     =stylesheet_link_tag "screen"
-    =javascript_include_tag "application"
+    =javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false", "application"
 
   %body.body
-    %header#header
-      = render 'layouts/header'
-    %section#content
-      = yield
-    %footer#footer
-      = render 'layouts/footer'
+    %section#holder
+      %header#header
+        = render 'layouts/header'
+      %section#content
+
+        = yield
+      %footer#footer
+        = render 'layouts/footer'
+    %section#map

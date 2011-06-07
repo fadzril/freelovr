@@ -1494,10 +1494,19 @@ button.ui-button::-moz-focus-inner {
   src: url(/stylesheets/fonts/DINMedium.ttf) format('truetype');
 }
 
+html {
+  height: 100%;
+}
+
+body.body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background: #858585;
-  max-width: 1500px;
-  min-width: 700px;
   margin: 0;
   padding: 20px 0;
   line-height: 1.6em;
@@ -1521,7 +1530,6 @@ body header#header {
   margin: 0 auto;
   text-align: left;
   color: #333;
-  position: fixed;
   right: 10px;
   top: 10px;
 }
@@ -1529,15 +1537,16 @@ body header#header h1 {
   float: left;
   font: bold 1.3em/1.6em "Helvetica Neue", Helvetica, sans-serif;
   color: #FFF;
+  margin: 5px 10px;
 }
 body header#header div#logo {
-  background: transparent url("../images/logo.png") top left no-repeat;
-  height: 170px;
-  width: 170px;
   float: left;
 }
 body header#header div#logo h1 {
-  text-indent: -9999em;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: -0.05em;
+  color: #222;
 }
 body header#header nav#navigation {
   display: block;
@@ -1594,12 +1603,25 @@ body header#header nav#navigation ul li:last-child {
   -ms-transform: rotate(-25deg);
   transform: rotate(-25deg);
 }
+body section#holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 380px;
+  background: rgba(255, 255, 255, 0.7);
+}
+body #map {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+}
 body section#content {
   text-align: center;
+  position: relative;
 }
 body section#content article.panel {
   margin: 0 auto;
-  min-width: 1024px;
   overflow: hidden;
   text-align: center;
 }
@@ -1872,7 +1894,7 @@ body section#content ul#list {
   text-align: center;
 }
 body section#content ul#list li {
-  width: 320px;
+  width: 350px;
   padding: 10px;
   background: transparent url("../images/list-background.png") top right no-repeat;
   margin: 5px;

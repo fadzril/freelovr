@@ -2,6 +2,7 @@
 //= require <spine>
 //= require <jquery.ui>
 //= require <selectbox>
+//= require <controller/map>
 
 jQuery(function($){
   window.App = Spine.Controller.create({
@@ -55,6 +56,7 @@ jQuery(function($){
 
     init: function(){
 
+      Map.init();
       $('select').selectbox();
       $('.statistic').find('li').each(this.randomized);
 
