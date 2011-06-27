@@ -9371,6 +9371,7 @@ jQuery(function($){
 
      showMap : function() {
       this.mapContainer.show();
+
      },
 
      hideMap : function() {
