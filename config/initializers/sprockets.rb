@@ -1,8 +1,8 @@
-if Rails.env.development?
+if !Rails.env.production?
   secretary = Sprockets::Secretary.new(
     :asset_root   => "public",
     :load_path    => ["app/javascripts/", "app/javascripts/vendor"],
-    :source_files => ["app/javascripts/*.js", "app/javascripts/**/*.js"]
+    :source_files => ["app/javascripts/*.js"]
   )
 
   # Generate a Sprockets::Concatenation object from the source files

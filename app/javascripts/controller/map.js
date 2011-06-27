@@ -6,7 +6,6 @@ jQuery(function($){
      },
 
      render : function() {
-       console.log('in',  google.maps);
        var lat = 3.0774376970512085; //45.428688849691014;
        var lng = 101.51641845703125; //12.317744493484497;
        var point = new google.maps.LatLng(lat,lng);

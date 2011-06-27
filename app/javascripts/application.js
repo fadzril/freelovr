@@ -1,7 +1,7 @@
-//= require <jquery>
-//= require <spine>
-//= require <jquery.ui>
-//= require <selectbox>
+//= require <vendor/jquery>
+//= require <vendor/spine>
+//= require <vendor/jquery.ui>
+//= require <vendor/selectbox>
 //= require <controller/map>
 
 jQuery(function($){
@@ -41,7 +41,7 @@ jQuery(function($){
           $.getJSON('filters/index', extractLast(request.term), response);
         },
         search: function(){
-          console.log(this.value)
+          if (console) console.log(this.value)
         },
         focus: function(){
           return false;

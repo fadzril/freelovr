@@ -20,7 +20,5 @@ jQuery(function($) {
       this.items = this.elements;
       $(this.items).click()
      }
-
-
   })
 });

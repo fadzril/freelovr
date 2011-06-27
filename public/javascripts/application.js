@@ -6109,7 +6109,7 @@ jQuery.extend({
 			html: "text/html",
 			text: "text/plain",
 			json: "application/json, text/javascript",
-			"*": "*/*"
+			"*": "*/"
 		},
 
 		contents: {
@@ -8001,7 +8001,7 @@ window.jQuery = window.$ = jQuery;
         if (moduleKeywords.indexOf(key) == -1)
           this[key] = obj[key];
 
-      var extended = obj.extended;
+      var extended = obj.hasOwnProperty('extended');
       if (extended) extended.apply(this);
       return this;
     }
@@ -9339,7 +9339,6 @@ jQuery(function($){
      },
 
      render : function() {
-       console.log('in',  google.maps);
        var lat = 3.0774376970512085; //45.428688849691014;
        var lng = 101.51641845703125; //12.317744493484497;
        var point = new google.maps.LatLng(lat,lng);
@@ -9427,7 +9426,7 @@ jQuery(function($){
           $.getJSON('filters/index', extractLast(request.term), response);
         },
         search: function(){
-          console.log(this.value)
+          if (console) console.log(this.value)
         },
         focus: function(){
           return false;
@@ -9452,310 +9451,3 @@ jQuery(function($){
     }
   }).init();
 });
-jQuery(function($) {
-   window.Actions = Spine.Controller.create({
-     elements: {
-       '.action .details': 'details'
-     },
-
-     events: {
-       '.action .details': 'click',
-       '.action .website': 'click'
-     },
-
-     init: function() {
-       this.elements.hide();
-
-       Actions.bind('change', this.render);
-       this.App.bind('change', this.render)
-     },
-
-     render: function(){
-      this.items = this.elements;
-      $(this.items).click()
-     }
-
-
-  })
-});
-jQuery(function($){
-  window.Contacts = Spine.Controller.create({
-    elements: {
-      ".show": "showEl",
-      ".edit": "editEl",
-      ".show .content": "showContent",
-      ".edit .content": "editContent"
-    },
-
-    events: {
-      "click .optEdit": "edit",
-      "click .optEmail": "email",
-      "click .optDestroy": "destroy",
-      "click .optSave": "save"
-    },
-
-    proxied: ["render", "show", "edit"],
-
-    init: function(){
-      this.editEl.hide();
-
-      Contact.bind("change", this.render);
-      this.App.bind("show:contact", this.show);
-      this.App.bind("edit:contact", this.edit);
-    },
-
-    change: function(item){
-      this.current = item;
-      this.render();
-    },
-
-    render: function(){
-      this.showContent.html($("#contactTemplate").tmpl(this.current));
-      this.editContent.html($("#editContactTemplate").tmpl(this.current));
-    },
-
-    show: function(item){
-      if (item && item.model) this.change(item);
-
-      this.showEl.show();
-      this.editEl.hide();
-    },
-
-    edit: function(item){
-      if (item && item.model) this.change(item);
-
-      this.showEl.hide();
-      this.editEl.show();
-    },
-
-    destroy: function(){
-      if (confirm("Are you sure?"))
-        this.current.destroy();
-    },
-
-    email: function(){
-      if ( !this.current.email ) return;
-      window.location = "mailto:" + this.current.email;
-    },
-
-    save: function(){
-      var atts = this.editEl.serializeForm();
-      this.current.updateAttributes(atts);
-      this.show();
-    }
-  });
-})
-var Contact = Spine.Model.setup("Contact", ["first_name", "last_name", "email",
-                                            "mobile", "work", "address", "notes"]);
-
-Contact.extend(Spine.Model.Local);
-Contact.extend(Spine.Model.Filter);
-
-Contact.selectAttributes = ["first_name", "last_name", "email",
-                            "mobile", "work", "address"];
-
-Contact.nameSort = function(a, b){
-  if(a.first_name == b.first_name){
-		if (a.first_name == b.first_name) return 0;
-		return (a.first_name < b.first_name) ? -1 : 1;
-	}
-
-	return (a.first_name < b.first_name) ? -1 : 1;
-};
-
-Contact.include({
-  selectAttributes: function(){
-    var result = {};
-    for (var i=0; i < this.parent.selectAttributes.length; i++) {
-      var attr = this.parent.selectAttributes[i];
-      result[attr] = this[attr];
-    }
-    return result;
-  },
-
-  fullName: function(){
-    if ( !this.first_name && !this.last_name ) return;
-    return(this.first_name + " " + this.last_name);
-  }
-});
-(function() {
-  function isEventSupported(eventName) {
-    var el = document.createElement('div');
-    eventName = 'on' + eventName;
-    var isSupported = (eventName in el);
-    if (!isSupported) {
-      el.setAttribute(eventName, 'return;');
-      isSupported = typeof el[eventName] == 'function';
-    }
-    el = null;
-    return isSupported;
-  }
-
-  function isForm(element) {
-    return Object.isElement(element) && element.nodeName.toUpperCase() == 'FORM'
-  }
-
-  function isInput(element) {
-    if (Object.isElement(element)) {
-      var name = element.nodeName.toUpperCase()
-      return name == 'INPUT' || name == 'SELECT' || name == 'TEXTAREA'
-    }
-    else return false
-  }
-
-  var submitBubbles = isEventSupported('submit'),
-      changeBubbles = isEventSupported('change')
-
-  if (!submitBubbles || !changeBubbles) {
-    Event.Handler.prototype.initialize = Event.Handler.prototype.initialize.wrap(
-      function(init, element, eventName, selector, callback) {
-        init(element, eventName, selector, callback)
-        if ( (!submitBubbles && this.eventName == 'submit' && !isForm(this.element)) ||
-             (!changeBubbles && this.eventName == 'change' && !isInput(this.element)) ) {
-          this.eventName = 'emulated:' + this.eventName
-        }
-      }
-    )
-  }
-
-  if (!submitBubbles) {
-    document.on('focusin', 'form', function(focusEvent, form) {
-      if (!form.retrieve('emulated:submit')) {
-        form.on('submit', function(submitEvent) {
-          var emulated = form.fire('emulated:submit', submitEvent, true)
-          if (emulated.returnValue === false) submitEvent.preventDefault()
-        })
-        form.store('emulated:submit', true)
-      }
-    })
-  }
-
-  if (!changeBubbles) {
-    document.on('focusin', 'input, select, texarea', function(focusEvent, input) {
-      if (!input.retrieve('emulated:change')) {
-        input.on('change', function(changeEvent) {
-          input.fire('emulated:change', changeEvent, true)
-        })
-        input.store('emulated:change', true)
-      }
-    })
-  }
-
-  function handleRemote(element) {
-    var method, url, params;
-
-    var event = element.fire("ajax:before");
-    if (event.stopped) return false;
-
-    if (element.tagName.toLowerCase() === 'form') {
-      method = element.readAttribute('method') || 'post';
-      url    = element.readAttribute('action');
-      params = element.serialize();
-    } else {
-      method = element.readAttribute('data-method') || 'get';
-      url    = element.readAttribute('href');
-      params = {};
-    }
-
-    new Ajax.Request(url, {
-      method: method,
-      parameters: params,
-      evalScripts: true,
-
-      onComplete:    function(request) { element.fire("ajax:complete", request); },
-      onSuccess:     function(request) { element.fire("ajax:success",  request); },
-      onFailure:     function(request) { element.fire("ajax:failure",  request); }
-    });
-
-    element.fire("ajax:after");
-  }
-
-  function handleMethod(element) {
-    var method = element.readAttribute('data-method'),
-        url = element.readAttribute('href'),
-        csrf_param = $$('meta[name=csrf-param]')[0],
-        csrf_token = $$('meta[name=csrf-token]')[0];
-
-    var form = new Element('form', { method: "POST", action: url, style: "display: none;" });
-    element.parentNode.insert(form);
-
-    if (method !== 'post') {
-      var field = new Element('input', { type: 'hidden', name: '_method', value: method });
-      form.insert(field);
-    }
-
-    if (csrf_param) {
-      var param = csrf_param.readAttribute('content'),
-          token = csrf_token.readAttribute('content'),
-          field = new Element('input', { type: 'hidden', name: param, value: token });
-      form.insert(field);
-    }
-
-    form.submit();
-  }
-
-
-  document.on("click", "*[data-confirm]", function(event, element) {
-    var message = element.readAttribute('data-confirm');
-    if (!confirm(message)) event.stop();
-  });
-
-  document.on("click", "a[data-remote]", function(event, element) {
-    if (event.stopped) return;
-    handleRemote(element);
-    event.stop();
-  });
-
-  document.on("click", "a[data-method]", function(event, element) {
-    if (event.stopped) return;
-    handleMethod(element);
-    event.stop();
-  });
-
-  document.on("submit", function(event) {
-    var element = event.findElement(),
-        message = element.readAttribute('data-confirm');
-    if (message && !confirm(message)) {
-      event.stop();
-      return false;
-    }
-
-    var inputs = element.select("input[type=submit][data-disable-with]");
-    inputs.each(function(input) {
-      input.disabled = true;
-      input.writeAttribute('data-original-value', input.value);
-      input.value = input.readAttribute('data-disable-with');
-    });
-
-    var element = event.findElement("form[data-remote]");
-    if (element) {
-      handleRemote(element);
-      event.stop();
-    }
-  });
-
-  document.on("ajax:after", "form", function(event, element) {
-    var inputs = element.select("input[type=submit][disabled=true][data-disable-with]");
-    inputs.each(function(input) {
-      input.value = input.readAttribute('data-original-value');
-      input.removeAttribute('data-original-value');
-      input.disabled = false;
-    });
-  });
-
-  Ajax.Responders.register({
-    onCreate: function(request) {
-      var csrf_meta_tag = $$('meta[name=csrf-token]')[0];
-
-      if (csrf_meta_tag) {
-        var header = 'X-CSRF-Token',
-            token = csrf_meta_tag.readAttribute('content');
-
-        if (!request.options.requestHeaders) {
-          request.options.requestHeaders = {};
-        }
-        request.options.requestHeaders[header] = token;
-      }
-    }
-  });
-})();

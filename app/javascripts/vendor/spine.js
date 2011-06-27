@@ -160,7 +160,7 @@
         if (moduleKeywords.indexOf(key) == -1)
           this[key] = obj[key];
 
-      var extended = obj.extended;
+      var extended = obj.hasOwnProperty('extended');
       if (extended) extended.apply(this);
       return this;
     }
