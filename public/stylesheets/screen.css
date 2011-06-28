@@ -1611,17 +1611,31 @@ body section#content article.panel section.list {
 }
 body section#content aside.sidebar {
   float: left;
-  padding: 10px;
-  background: #CCC;
-  margin: 5px;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 0;
   text-align: left;
   display: block;
   position: absolute;
   bottom: 10px;
   left: 0;
+  width: 100%;
 }
 body section#content aside.sidebar .statistic {
   display: inline-block;
+  padding: 10px;
+}
+body section#content aside.sidebar .statistic h2 {
+  font-size: 23px;
+  font-weight: bold;
+  text-shadow: 0 1px #CCC;
+  margin: 0;
+}
+body section#content aside.sidebar .statistic h3 {
+  font-size: 16px;
+  color: #FFF;
+  text-shadow: 0 1px #111;
+  margin-bottom: 10px;
 }
 body section#content aside.sidebar ul {
   list-style: none;
@@ -1637,10 +1651,11 @@ body section#content aside.sidebar ul li {
 }
 body section#content aside.sidebar ul span {
   padding: 6px 0;
+  color: #FFF;
 }
 body section#content aside.sidebar ul .size {
   padding: 5px;
-  margin: 0;
+  margin: -7px 5px 0 0;
   width: 20px;
   height: 20px;
   border-radius: 30px;

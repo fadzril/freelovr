@@ -138,17 +138,33 @@ body {
 
 		aside.sidebar {
 			float: left;
-     	padding: 10px;
-     	background: #CCC;
-     	margin: 5px;
+     	padding: 0;
+     	background: rgba(0, 0, 0, .6);
+     	margin: 0;
      	text-align: left;
      	display: block;
 			position: absolute;
 			bottom: 10px;
 			left: 0;
+			width: 100%;
 		
 			.statistic {
 				display: inline-block;
+				padding: 10px;
+				
+				h2 {
+					font-size: 23px;
+					font-weight: bold;
+					text-shadow: 0 1px #CCC;
+					margin: 0;
+				}
+				
+				h3 {
+					font-size: 16px;
+					color: #FFF;
+					text-shadow: 0 1px #111;
+					margin-bottom: 10px;
+				}
 			}
 
      	ul {
@@ -166,11 +182,12 @@ body {
 
        	span {
          	padding: 6px 0;
+					color: #FFF;
        	}
 
        	.size {
          	padding: 5px;
-         	margin: 0;
+         	margin: -7px 5px 0 0;
          	width: 20px;
          	height: 20px;
          	@include border-radius(30px);

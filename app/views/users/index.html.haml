@@ -29,8 +29,7 @@
 %aside.sidebar
   %div.statistic
     %h2 Freelovr Statistic
-    %h3= "Currently #{@users.total_entries} freelancers"
-    %h3= "Currently #{@statistic.size} jobs are active"
+    %h3= "#{@users.total_entries} freelancers and #{@statistic.size} jobs are active"
     %ul
       -@statistic.each do |s|
         %li
