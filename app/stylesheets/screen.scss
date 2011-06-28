@@ -38,6 +38,10 @@ body {
     float: left;
     width: 100%;
   }
+	
+	section#content {
+		min-height: 100%;
+	}
 
   header#header {
     margin: 0 auto;
@@ -66,31 +70,28 @@ body {
 
     nav#navigation {
       display:  block;
-      float: left;
-      clear: both;
+      clear: none;
 
       ul {
         list-style: none;
-        margin: 0;
+        margin: 1em 0;
         padding: 0;
+				float: right;
 
         li {
           padding: 0;
           margin: 0;
           display: inline;
-          position: absolute;
-          top: 75px;
-          left: -95px;
-          @include rotate(0deg);
+					float: left;
 
           a {
             padding: 5px 0;
-            margin: 0;
+            margin: 0 2px;
             outline: none;
             color: #EEE;
             background: #262626;
             width: 100px;
-            float: right;
+            float: left;
             text-align: center;
           }
 
@@ -98,17 +99,6 @@ body {
             background: #111;
             color: #FFF;
           }
-        }
-        li:first-child {
-          top: 30px;
-          left: -85px;
-          @include rotate(25deg);
-        }
-
-        li:last-child {
-          top: 120px;
-          left: -85px;
-          @include rotate(-25deg);
         }
       }
     }
@@ -119,8 +109,9 @@ body {
     top : 0;
     left : 0;
     z-index: 10;
-    width: 380px;
     background: rgba(255, 255, 255, .7);
+		min-height: 100%;
+		min-width: 100%;
   }
 
   #map {
@@ -132,7 +123,7 @@ body {
   section#content {
     text-align: center;
     position: relative;
-
+		min-height: 100%;
 
     article.panel {
       margin: 0 auto;
@@ -143,48 +134,56 @@ body {
         margin: 0 auto;
         text-align: left;
       }
-
-      aside.sidebar {
-        float: left;
-        padding: 10px;
-        background: #CCC;
-        margin: 5px;
-        text-align: left;
-        display: block;
-
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-
-          li {
-            list-style: none;
-            padding: 6px 0;
-            margin: 0;
-          }
-
-          span {
-            padding: 6px 0;
-
-          }
-
-          .size {
-            padding: 5px;
-            margin: 0;
-            width: 20px;
-            height: 20px;
-            @include border-radius(30px);
-            @include box-shadow(#8a8a8a 0px 1px 5px inset);
-            background: red;
-            color: #222;
-            float: left;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid #EEE;
-          }
-        }
-      }
     }
+
+		aside.sidebar {
+			float: left;
+     	padding: 10px;
+     	background: #CCC;
+     	margin: 5px;
+     	text-align: left;
+     	display: block;
+			position: absolute;
+			bottom: 10px;
+			left: 0;
+		
+			.statistic {
+				display: inline-block;
+			}
+
+     	ul {
+       	list-style: none;
+       	padding: 0;
+       	margin: 0;
+
+       	li {
+         	list-style: none;
+         	padding: 6px 0;
+         	margin: 0 6px;
+					float: left;
+					line-height: 1;
+       	}
+
+       	span {
+         	padding: 6px 0;
+       	}
+
+       	.size {
+         	padding: 5px;
+         	margin: 0;
+         	width: 20px;
+         	height: 20px;
+         	@include border-radius(30px);
+         	@include box-shadow(#8a8a8a 0px 1px 5px inset);
+         	background: red;
+         	color: #222;
+         	float: left;
+         	text-align: center;
+         	font-weight: bold;
+         	border: 1px solid #EEE;
+       	}
+     	}
+   	}
 
 
     #filter {

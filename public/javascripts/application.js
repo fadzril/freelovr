@@ -6109,7 +6109,7 @@ jQuery.extend({
 			html: "text/html",
 			text: "text/plain",
 			json: "application/json, text/javascript",
-			"*": "*/"
+			"*": "*/*"
 		},
 
 		contents: {
@@ -9334,6 +9334,9 @@ b.dequeue()})})}})(jQuery);
 jQuery(function($){
    window.Map = Spine.Controller.create({
      el : "body",
+
+     map : null,
+
      elements : {
        "#map": "mapContainer"
      },
@@ -9342,35 +9345,39 @@ jQuery(function($){
        var lat = 3.0774376970512085; //45.428688849691014;
        var lng = 101.51641845703125; //12.317744493484497;
        var point = new google.maps.LatLng(lat,lng);
-       var opt = {
-          zoom : 12,
-          center : point,
-          mapTypeId : google.maps.MapTypeId.HYBRID,
-          mapTypeControl : false,
-          panControl : true,
-          panControlOptions : {
-            position : google.maps.ControlPosition.TOP_RIGHT
-          },
-          zoomControl : true,
-          zoomControlOptions : {
-            style : google.maps.ZoomControlStyle.SMALL,
-            position : google.maps.ControlPosition.TOP_RIGHT
-          },
-          streetViewControl : true,
-          streetViewControlOptions	: {
-            position : google.maps.ControlPosition.TOP_RIGHT
-          }
+       var options = {
+             zoom : 12,
+             center : point,
+             mapTypeId : google.maps.MapTypeId.HYBRID,
+             mapTypeControl : false,
+             panControl : true,
+             panControlOptions : {
+               position : google.maps.ControlPosition.TOP_RIGHT
+             },
+             zoomControl : true,
+             zoomControlOptions : {
+               style : google.maps.ZoomControlStyle.SMALL,
+               position : google.maps.ControlPosition.TOP_RIGHT
+             },
+             streetViewControl : true,
+             streetViewControlOptions	: {
+               position : google.maps.ControlPosition.TOP_RIGHT
+             }
        };
-       var map = new google.maps.Map(document.getElementById('map'), opt);
-       map.setTilt(45);
 
-       var marker = new google.maps.Marker(point);
-       marker.setMap(map);
+       window.Map.fn.map = new google.maps.Map(document.getElementById('map'), options);
+       window.Map.fn.map.setTilt(45);
      },
 
      showMap : function() {
-      this.mapContainer.show();
-
+       var that = this;
+       var geocoder = new google.maps.Geocoder();
+       if (window.Twitter.fn.els.users.length) {
+         $.each(window.Twitter.fn.els.users, function(key, value) {
+           geocoder.geocode({address: value.properties.location}, that.createMarkers)
+         });
+         clearTimeout(this);
+       }
      },
 
      hideMap : function() {
@@ -9378,15 +9385,86 @@ jQuery(function($){
      },
 
      showDetails : function() {
-      var marker = new google.maps.Marker(points);
+     },
+
+     createMarkers: function(response, status) {
+       if (status == google.maps.GeocoderStatus.OK) {
+
+         var x = response[0].geometry.location.lat();
+         var y = response[0].geometry.location.lng();
+         var marker = new google.maps.Marker({
+           icon: value.avatarImg,
+           map: map,
+           title: value.screenName,
+           position: new google.maps.LatLng(x, y)
+         });
+
+         marker.setMap(window.Map.fn.map);
+       }
      },
 
      init : function() {
        this.App.bind('change', this.render);
        this.render();
+       this.mapContainer.show();
      }
 
    });
+});
+jQuery(function($) {
+  window.Twitter = Spine.Controller.create({
+    els : {
+      users : []
+    },
+
+    userList: function() {
+      var that = this;
+      $.getJSON('/users/list.json', function(data) {
+        $.each(data, function(key, value) {
+          var username = that.trimName(value);
+          window.Twitter.fn.getUsers(username);
+        });
+      });
+    },
+
+    trimName: function(str) {
+      return str
+        .replace('http', '')
+        .replace(/[:\/\/!.#]/ig, '')
+        .replace(/(www)(twitter)(com)/g, '')
+        .replace(/twittercom/, '')
+        .replace('@', '');
+    },
+
+    getUsers: function(user) {
+      if (user) {
+        var path = 'http://twitter.com/users/show/'+user;
+        $.ajax({
+          url: path,
+          dataType: 'text',
+          success: function(data) {
+            var properties = {
+              'screenName': data.screen_name,
+              'avatarImg' : data.profile_img_url,
+              'location'  : data.location
+            };
+            window.Twitter.fn.els.users.push(properties);
+            clearTimeout(this);
+          }
+        });
+      } else {
+        return false;
+      }
+    },
+
+    callbackEventHandler : function(data) {
+      return false;
+    },
+
+    init: function() {
+      this.userList();
+    }
+  });
 });
 
 jQuery(function($){
@@ -9396,7 +9474,9 @@ jQuery(function($){
     elements: {
       "#filter input": "filter",
       ".detail a": 'detail',
-      ".detail .level": 'level'
+      ".detail .level": 'level',
+      "#content" : 'content',
+      "window" : 'window'
     },
 
     randomized: function(){
@@ -9439,14 +9519,27 @@ jQuery(function($){
       });
     },
 
-    init: function(){
+    changeDimension : function(e) {
+      if (console) console.log(e.type);
+      setTimeout(function() {
+        $('#content').height($(window).height() - 100);
+      }, 100);
+    },
 
+    init: function(){
       Map.init();
       $('select').selectbox();
       $('.statistic').find('li').each(this.randomized);
 
       this.detail.live('click', this.render);
       this.filter.live('keypress', this.fetch);
+
+      this.el.bind('load', this.changeDimension);
+      $(window).bind('resize', this.changeDimension).trigger('resize');
+
+      setTimeout(function() {
+        Twitter.init();
+      }, 4000);
 
     }
   }).init();

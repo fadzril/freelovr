@@ -3,6 +3,7 @@
 //= require <vendor/jquery.ui>
 //= require <vendor/selectbox>
 //= require <controller/map>
+//= require <controller/twitter>
 
 jQuery(function($){
   window.App = Spine.Controller.create({
@@ -11,7 +12,9 @@ jQuery(function($){
     elements: {
       "#filter input": "filter",
       ".detail a": 'detail',
-      ".detail .level": 'level'
+      ".detail .level": 'level',
+      "#content" : 'content',
+      "window" : 'window'
     },
 
     randomized: function(){
@@ -53,16 +56,29 @@ jQuery(function($){
         }
       });
     },
+    
+    changeDimension : function(e) {
+      if (console) console.log(e.type);
+      setTimeout(function() {
+        $('#content').height($(window).height() - 100);
+      }, 100);
+    },
 
     init: function(){
-
       Map.init();
       $('select').selectbox();
       $('.statistic').find('li').each(this.randomized);
-
       //TODO: refactor to controller, remove all attached events
+
       this.detail.live('click', this.render);
       this.filter.live('keypress', this.fetch);
+      
+      this.el.bind('load', this.changeDimension);
+      $(window).bind('resize', this.changeDimension).trigger('resize');
+      
+      setTimeout(function() {
+        Twitter.init();
+      }, 4000);
 
     }
   }).init();

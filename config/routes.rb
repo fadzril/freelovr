@@ -1,6 +1,8 @@
 Freelovr::Application.routes.draw do
   get "users/new"
 
+  get "users/list"
+
   get "users/show"
 
   get "admins/new"

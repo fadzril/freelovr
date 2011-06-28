@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @users = User.order('created_at ASC').paginate :page => params[:page], :per_page => 10
+    @users = User.order('created_at ASC').paginate :page => params[:page], :per_page => 12
     @statistic = User.select("COUNT(1) as total, designation").order('COUNT(1) DESC').group("designation")
     @status = User.select("availability")
 
     respond_to do |format|
       format.html #index.html.haml
-      format.xml { render :xml => @user }
+      format.json { render :json => User.all }
     end
   end
 
@@ -82,6 +82,16 @@ class UsersController < ApplicationController
   def rate
     @user = User.find(params[:id])
     @user.rates
+  end
+
+  def list
+    @users_list = []
+    User.order('created_at ASC').each do |u|
+      if u.twitter != nil
+        @users_list << u.twitter
+      end
+    end
+    render :json => @users_list
   end
 
 end

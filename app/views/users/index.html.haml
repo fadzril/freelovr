@@ -26,13 +26,13 @@
           %div.status
             %span{class: user.availability}
       =will_paginate @users
-  %aside.sidebar
-    %div.statistic
-      %h2 Freelovr Statistic
-      %h3= "Currently #{@users.total_entries} freelancers"
-      %h3= "Currently #{@statistic.size} jobs are active"
-      %ul
-        -@statistic.each do |s|
-          %li
-            %span.size= "#{s.total.to_s}"
-            %span= "#{s.designation.to_s}"
+%aside.sidebar
+  %div.statistic
+    %h2 Freelovr Statistic
+    %h3= "Currently #{@users.total_entries} freelancers"
+    %h3= "Currently #{@statistic.size} jobs are active"
+    %ul
+      -@statistic.each do |s|
+        %li
+          %span.size= "#{s.total.to_s}"
+          %span= "#{s.designation.to_s}"
