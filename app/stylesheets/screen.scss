@@ -191,13 +191,17 @@ body {
          	width: 20px;
          	height: 20px;
          	@include border-radius(30px);
-         	@include box-shadow(#8a8a8a 0px 1px 5px inset);
+         	@include box-shadow(#111 0px 1px 5px inset);
          	background: red;
-         	color: #222;
+         	color: #FFF;
+					text-shadow: 0 1px #111;
          	float: left;
          	text-align: center;
+					font-family: "Helvetica Neue", Arial, sans-serif;
          	font-weight: bold;
-         	border: 1px solid #EEE;
+					font-size: 14px;
+					line-height: 18px;
+         	border: 1px solid #9a9a9a;
        	}
      	}
    	}
